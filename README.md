@@ -7,6 +7,8 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/OkulusDev/Oxygen)
 ![GitHub issues](https://img.shields.io/github/issues/OkulusDev/Oxygen)
 
+![Logotype](./docs/wall.jpg)
+
 ## Установка (Linux)
 У вас должен быть установлены [зависимости проекта](https://github.com/OkulusDev/Oxygen#зависимости)
 
