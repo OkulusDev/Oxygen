@@ -9,3 +9,19 @@
 --------------------------------------------------------------------------------
  Описание: Главный файл, содержащий импорты всех библиотек и функций
 """
+from oxygen.chemistry.basic import calculate_relative_molecular_mass
+from oxygen.chemistry.mendeleev_table import elements
+
+
+def main():
+    formula = input('Введите формулу: ')
+    mass = calculate_relative_molecular_mass(formula)
+    if mass is not None:
+        print(f'Относительная молекулярная масса формулы {formula}: {mass}')
+    else:
+        print(f'Ошибка парсинга формулы {formula}')
+
+
+if __name__ == "__main__":
+    main()
+
