@@ -1,23 +1,7 @@
-#!venv/bin/python3
-"""
---------------------------------------------------------------------------------
- Автор: Okulus Dev (aka DrArgentum)
- Лицензия: GNU GPL v3
- Название: Химия, периодическая таблица Менделеева
- Файл: oxygen/chemistry/mendeleev_table.py
---------------------------------------------------------------------------------
- Описание: Базовые функции для использования химии в ваших проектах
-  Пример использования в python-коде
-  formula = input("Введите химическую формулу: ")
-  result = calculate_relative_molecular_mass(formula)
-  print(f"Относительная молекулярная масса для {formula}: {result}")
-"""
-
-
 class Element:
-    def __init__(self, short_name: str, electronic_conf_of_outer_layer: str, \
-                name: str, atomic_number: int, relative_atomic_mass: float, \
-                group: str, period: int, row: int, group_num: int, \
+    def __init__(self, short_name: str, electronic_conf_of_outer_layer: str,
+                name: str, atomic_number: int, relative_atomic_mass: float,
+                group: str, period: int, row: int, group_num: int,
                 side_group: bool, is_metal: bool):
         self.short_name = short_name
         self.electronic_conf_of_outer_layer = electronic_conf_of_outer_layer
@@ -32,7 +16,10 @@ class Element:
         self.row = row
         self.group_num = group_num
 
-elements = {
+
+AVOGADRO_NUMBER = 6.02214076e23
+
+ELEMENTS = {
     # Символ ЭлКонф Название АтомноеЧисло ОтносАтомМасса группа период ряд
     # номерГруппы ЭтопобочнаяГруппа ЭтоМетал
     'H': Element('H', '1s^1', 'Водород', 1, 1.00794, 'A', 1, 1, 1, False, False),
@@ -43,7 +30,7 @@ elements = {
     'C': Element('C', '2s^2 2p^2', 'Углерод', 6, 12.011, 'A', 4, 2, 2, False, False),
     'N': Element('N', '2s^2 2p^3', 'Азот', 7, 14.0067, 'A', 5, 2, 2, False, False),
     'O': Element('O', '2s^2 2p^4', 'Кислород', 8, 15.9994, 'A', 6, 2, 2, False, False),
+    'F': Element('F', '2s^2 2p^5', 'Фтор', 9, 18.998403, 'A', 7, 2, 2, False, False),
+    'Ne': Element('Ne', '2s^2 2p^6', 'Неон', 10, 20.179, 'A', 8, 2, 2, False, False),
+    'Na': Element('Na', '3s^1', 'Натрий', 11, 22.98977, 'A', 1, 3, 3, False, True),
 }
-
-AVOGADRO_NUMBER = 6.02214076e23
-
