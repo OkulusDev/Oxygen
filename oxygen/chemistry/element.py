@@ -89,7 +89,10 @@ ELEMENTS = {
     'Ti': Element('Ti', '3d^2 4s^2', 'Титан', 22, 47.90, 'B', 4, 4, 4, True, True),
     'V': Element('V', '3d^3 4s^2', 'Ванадий', 23, 50.942, 'B', 5, 4, 4, True, True),
     'Cr': Element('Cr', '3d^5 4s^1', 'Хром', 24, 51.996, 'B', 6, 4, 4, True, True),
-    'Mn': Element('Mn', '3d^5 4s^2', 'Марганец', 25, 54.938, 'B', 7, 4, 4, True, True)
+    'Mn': Element('Mn', '3d^5 4s^2', 'Марганец', 25, 54.938, 'B', 7, 4, 4, True, True),
+    'Fe': Element('Fe', '3d^6 4s^2', 'Железо', 26, 55.847, 'B', 8, 4, 4, True, True),
+    'Co': Element('Co', '3d^7 4s^2', 'Кобальт', 27, 58.9332, 'B', 8, 4, 4, True, True),
+    'Ni': Element('Ni', '4d^8 4s^2', 'Никель', 28, 58.71, 'B', 8, 4, 4, True, True)
 }
 
 
@@ -100,6 +103,13 @@ class MendeleevTable:
     def find_element_by_shortname(self, shortname: str) -> Union[Element, None]:
         for element in self.elements:
             if element.short_name == shortname:
+                return element
+
+        return None
+
+    def find_element_by_name(self, name: str) -> Union[Element, None]:
+        for element in self.elements:
+            if element.name == name:
                 return element
 
         return None
