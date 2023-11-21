@@ -100,6 +100,7 @@ def calculate_relative_molecular_mass(formula, print_info=False) -> dict:
 
 
 class ChemicalFormula:
+    """химическая формула"""
     def __init__(self, elements: dict, formula: str,
                  name: str, molecular_mass: float=None):
         self.elements = elements
