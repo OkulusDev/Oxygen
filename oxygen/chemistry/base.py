@@ -7,10 +7,22 @@
  Файл: oxygen/chemistry/base.py
 --------------------------------------------------------------------------------
  Описание: Базовые функции для использования химии в ваших проектах
-  Пример использования в python-коде
-  formula = input("Введите химическую формулу: ")
-  result = calculate_relative_molecular_mass(formula)
-  print(f"Относительная молекулярная масса для {formula}: {result}")
+  Перечень:
+   1. Парсинг элементов из формулы
+   2. Вычисление молекулярной массы
+   3. Вычисление массовой доли
+
+Copyright (C) 2023  Okulus Dev
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 import re
 from collections import Counter
@@ -36,10 +48,25 @@ def get_element_mass(element):
     return ELEMENTS[element].relative_atomic_mass
 
 
+def calculate_mass_fraction_of_element(formula, element):
+    formula = parse_molecule(formula)
+    mass_fraction = 0
+    mass = 0
+
+    for i in formula.items():
+        mass += get_element_mass(i[0]) * i[1]
+
+    for i in formula.items():
+        if ELEMENTS[i[0]].short_name == element:
+            mass_fraction = (get_element_mass(i[0]) * i[1] / mass) * 100
+            break
+
+    return mass_fraction
+
+
 def calculate_relative_molecular_mass(formula, print_info=False) -> dict:
     result = parse_molecule(formula)
     mass = 0
-
     neutrons = 0
     electrons = 0
     protons = 0

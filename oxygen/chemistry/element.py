@@ -1,3 +1,27 @@
+#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+"""
+--------------------------------------------------------------------------------
+ Автор: Okulus Dev (aka DrArgentum)
+ Лицензия: GNU GPL v3
+ Название: Основной файл
+ Файл: oxygen/chemistry/elemnent.py
+--------------------------------------------------------------------------------
+ Описание: файл с химическими элементами
+
+Copyright (C) 2023  Okulus Dev
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+from typing import Union
 from oxygen.base.base import round_to_nearest
 
 
@@ -5,7 +29,7 @@ class Element:
     def __init__(self, short_name: str, electronic_conf_of_outer_layer: str,
                 name: str, atomic_number: int, relative_atomic_mass: float,
                 group: str, period: int, row: int, group_num: int,
-                side_group: bool, is_metal: bool):
+                side_group: bool, is_metal: bool) -> None:
         self.short_name = short_name
         self.electronic_conf_of_outer_layer = electronic_conf_of_outer_layer
         self.name = name
@@ -23,14 +47,17 @@ class Element:
         self.calculate_electrons()
         self.calculate_neutrons()
 
-    def calculate_protons(self):
+    def calculate_protons(self) -> float:
         self.protons = self.atomic_number
+        return float(self.protons)
 
-    def calculate_electrons(self):
+    def calculate_electrons(self) -> float:
         self.electrons = self.atomic_number
+        return float(self.electrons)
 
-    def calculate_neutrons(self):
+    def calculate_neutrons(self) -> float:
         self.neutrons = round_to_nearest(self.relative_atomic_mass) - self.protons
+        return float(self.neutrons)
 
 
 AVOGADRO_NUMBER = 6.02214076e23
@@ -64,3 +91,16 @@ ELEMENTS = {
     'Cr': Element('Cr', '3d^5 4s^1', 'Хром', 24, 51.996, 'B', 6, 4, 4, True, True),
     'Mn': Element('Mn', '3d^5 4s^2', 'Марганец', 25, 54.938, 'B', 7, 4, 4, True, True)
 }
+
+
+class MendeleevTable:
+    def __init__(self, elements: list) -> None:
+        self.elements = elements
+
+    def find_element_by_shortname(self, shortname: str) -> Union[Element, None]:
+        for element in self.elements:
+            if element.short_name == shortname:
+                return element
+
+        return None
+
