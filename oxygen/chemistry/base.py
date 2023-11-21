@@ -36,17 +36,40 @@ def get_element_mass(element):
     return ELEMENTS[element].relative_atomic_mass
 
 
-def calculate_relative_molecular_mass(formula, print_info=False):
+def calculate_relative_molecular_mass(formula, print_info=False) -> dict:
     result = parse_molecule(formula)
     mass = 0
 
+    neutrons = 0
+    electrons = 0
+    protons = 0
+
     for i in result.items():
-        if print_info:
-            print(f'{i[1]} {ELEMENTS[i[0]].name} = {ELEMENTS[i[0]].relative_atomic_mass * i[1]}')
+        try:
+            if print_info:
+                print(f'{i[1]} {ELEMENTS[i[0]].name} = \
+{ELEMENTS[i[0]].relative_atomic_mass * i[1]}')
+                print(f'Кол-во протонов в {ELEMENTS[i[0]].short_name} \
+({ELEMENTS[i[0]].name}): {ELEMENTS[i[0]].protons}')
+                print(f'Кол-во электронов в {ELEMENTS[i[0]].short_name} \
+({ELEMENTS[i[0]].name}): {ELEMENTS[i[0]].electrons}')
+                print(f'Кол-во нейтронов в {ELEMENTS[i[0]].short_name} \
+({ELEMENTS[i[0]].name}): {ELEMENTS[i[0]].neutrons}')
 
-        mass += get_element_mass(i[0]) * i[1]
+            neutrons += ELEMENTS[i[0]].neutrons
+            electrons += ELEMENTS[i[0]].electrons
+            protons += ELEMENTS[i[0]].protons
 
-    return mass
+            mass += get_element_mass(i[0]) * i[1]
+        except:
+            raise ValueError(f'Element {i[0]} does not exists. Try other!')
+
+    return {
+        'mass': mass,
+        'electrons': electrons,
+        'neutrons': neutrons,
+        'protons': protons
+    }
 
 
 class ChemicalFormula:
@@ -76,3 +99,4 @@ def read_formula(formula):
 
         elements_in_formula_str = ", ".join(elements_in_formula)
         print(f'{CHEMICAL_FORMULAS[formula].name} состоит из {elements_in_formula_str}')
+

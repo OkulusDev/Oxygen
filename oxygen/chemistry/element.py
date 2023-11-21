@@ -1,3 +1,6 @@
+from oxygen.base.base import round_to_nearest
+
+
 class Element:
     def __init__(self, short_name: str, electronic_conf_of_outer_layer: str,
                 name: str, atomic_number: int, relative_atomic_mass: float,
@@ -16,6 +19,19 @@ class Element:
         self.row = row
         self.group_num = group_num
 
+        self.calculate_protons()
+        self.calculate_electrons()
+        self.calculate_neutrons()
+
+    def calculate_protons(self):
+        self.protons = self.atomic_number
+
+    def calculate_electrons(self):
+        self.electrons = self.atomic_number
+
+    def calculate_neutrons(self):
+        self.neutrons = round_to_nearest(self.relative_atomic_mass) - self.protons
+
 
 AVOGADRO_NUMBER = 6.02214076e23
 
@@ -33,4 +49,18 @@ ELEMENTS = {
     'F': Element('F', '2s^2 2p^5', 'Фтор', 9, 18.998403, 'A', 7, 2, 2, False, False),
     'Ne': Element('Ne', '2s^2 2p^6', 'Неон', 10, 20.179, 'A', 8, 2, 2, False, False),
     'Na': Element('Na', '3s^1', 'Натрий', 11, 22.98977, 'A', 1, 3, 3, False, True),
+    'Mg': Element('Na', '3s^2', 'Магний', 12, 24.305, 'A', 2, 3, 3, False, True),
+    'Al': Element('Al', '3s^2 3p^1', 'Алюминий', 13, 26.98154, 'A', 3, 3, 3, False, True),
+    'Si': Element('Na', '3s^2 3p^2', 'Кремний', 14, 28.0855, 'A', 4, 3, 3, False, False),
+    'P': Element('P', '3s^2 3p^3', 'Фосфор', 15, 30.97376, 'A', 5, 3, 3, False, False),
+    'S': Element('S', '3s^2 3p^4', 'Сера', 16, 32.066, 'A', 6, 3, 3, False, False),
+    'Cl': Element('Cl', '3s^2 3p^5', 'Хлор', 17, 35.453, 'A', 7, 3, 3, False, False),
+    'Ar': Element('Ar', '3s^2 3p^5', 'Аргон', 18, 39.948, 'A', 8, 3, 3, False, False),
+    "K": Element("K", '4s^1', 'Калий', 19, 39.102, 'A', 1, 4, 4, False, True),
+    "Ca": Element('Ca', '4s^2', 'Кальций', 20, 40.08, 'A', 2, 4, 4, False, True),
+    'Sc': Element('Sc', '3d^1 4s^2', 'Скандий', 21, 44.956, 'A', 3, 4, 4, False, True),
+    'Ti': Element('Ti', '3d^2 4s^2', 'Титан', 22, 47.90, 'B', 4, 4, 4, True, True),
+    'V': Element('V', '3d^3 4s^2', 'Ванадий', 23, 50.942, 'B', 5, 4, 4, True, True),
+    'Cr': Element('Cr', '3d^5 4s^1', 'Хром', 24, 51.996, 'B', 6, 4, 4, True, True),
+    'Mn': Element('Mn', '3d^5 4s^2', 'Марганец', 25, 54.938, 'B', 7, 4, 4, True, True)
 }
