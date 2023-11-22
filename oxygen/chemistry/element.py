@@ -62,55 +62,70 @@ class Element:
 
 AVOGADRO_NUMBER = 6.02214076e23
 
-ELEMENTS = {
+ELEMENTS = [
     # Символ ЭлКонф Название АтомноеЧисло ОтносАтомМасса группа период ряд
     # номерГруппы ЭтопобочнаяГруппа ЭтоМетал
-    'H': Element('H', '1s^1', 'Водород', 1, 1.00794, 'A', 1, 1, 1, False, False),
-    'He': Element('He', '1s^2', 'Гелий', 2, 4.002602, 'A', 8, 1, 1, False, False),
-    'Li': Element('Li', '2s^1', 'Литий', 3, 6.941, 'A', 1, 2, 2, False, True),
-    'Be': Element('Be', '2s^2', 'Бериллий', 4, 9.01218, 'A', 2, 2, 2, False, True),
-    'B': Element('B', '2s^2 2p^1', 'Бор', 5, 10.811, 'A', 3, 2, 2, False, False),
-    'C': Element('C', '2s^2 2p^2', 'Углерод', 6, 12.011, 'A', 4, 2, 2, False, False),
-    'N': Element('N', '2s^2 2p^3', 'Азот', 7, 14.0067, 'A', 5, 2, 2, False, False),
-    'O': Element('O', '2s^2 2p^4', 'Кислород', 8, 15.9994, 'A', 6, 2, 2, False, False),
-    'F': Element('F', '2s^2 2p^5', 'Фтор', 9, 18.998403, 'A', 7, 2, 2, False, False),
-    'Ne': Element('Ne', '2s^2 2p^6', 'Неон', 10, 20.179, 'A', 8, 2, 2, False, False),
-    'Na': Element('Na', '3s^1', 'Натрий', 11, 22.98977, 'A', 1, 3, 3, False, True),
-    'Mg': Element('Na', '3s^2', 'Магний', 12, 24.305, 'A', 2, 3, 3, False, True),
-    'Al': Element('Al', '3s^2 3p^1', 'Алюминий', 13, 26.98154, 'A', 3, 3, 3, False, True),
-    'Si': Element('Na', '3s^2 3p^2', 'Кремний', 14, 28.0855, 'A', 4, 3, 3, False, False),
-    'P': Element('P', '3s^2 3p^3', 'Фосфор', 15, 30.97376, 'A', 5, 3, 3, False, False),
-    'S': Element('S', '3s^2 3p^4', 'Сера', 16, 32.066, 'A', 6, 3, 3, False, False),
-    'Cl': Element('Cl', '3s^2 3p^5', 'Хлор', 17, 35.453, 'A', 7, 3, 3, False, False),
-    'Ar': Element('Ar', '3s^2 3p^5', 'Аргон', 18, 39.948, 'A', 8, 3, 3, False, False),
-    "K": Element("K", '4s^1', 'Калий', 19, 39.102, 'A', 1, 4, 4, False, True),
-    "Ca": Element('Ca', '4s^2', 'Кальций', 20, 40.08, 'A', 2, 4, 4, False, True),
-    'Sc': Element('Sc', '3d^1 4s^2', 'Скандий', 21, 44.956, 'A', 3, 4, 4, False, True),
-    'Ti': Element('Ti', '3d^2 4s^2', 'Титан', 22, 47.90, 'B', 4, 4, 4, True, True),
-    'V': Element('V', '3d^3 4s^2', 'Ванадий', 23, 50.942, 'B', 5, 4, 4, True, True),
-    'Cr': Element('Cr', '3d^5 4s^1', 'Хром', 24, 51.996, 'B', 6, 4, 4, True, True),
-    'Mn': Element('Mn', '3d^5 4s^2', 'Марганец', 25, 54.938, 'B', 7, 4, 4, True, True),
-    'Fe': Element('Fe', '3d^6 4s^2', 'Железо', 26, 55.847, 'B', 8, 4, 4, True, True),
-    'Co': Element('Co', '3d^7 4s^2', 'Кобальт', 27, 58.9332, 'B', 8, 4, 4, True, True),
-    'Ni': Element('Ni', '4d^8 4s^2', 'Никель', 28, 58.71, 'B', 8, 4, 4, True, True)
-}
+    Element('H', '1s^1', 'Водород', 1, 1.00794, 'A', 1, 1, 1, False, False),
+    Element('He', '1s^2', 'Гелий', 2, 4.002602, 'A', 8, 1, 1, False, False),
+    Element('Li', '2s^1', 'Литий', 3, 6.941, 'A', 1, 2, 2, False, True),
+    Element('Be', '2s^2', 'Бериллий', 4, 9.01218, 'A', 2, 2, 2, False, True),
+    Element('B', '2s^2 2p^1', 'Бор', 5, 10.811, 'A', 3, 2, 2, False, False),
+    Element('C', '2s^2 2p^2', 'Углерод', 6, 12.011, 'A', 4, 2, 2, False, False),
+    Element('N', '2s^2 2p^3', 'Азот', 7, 14.0067, 'A', 5, 2, 2, False, False),
+    Element('O', '2s^2 2p^4', 'Кислород', 8, 15.9994, 'A', 6, 2, 2, False, False),
+    Element('F', '2s^2 2p^5', 'Фтор', 9, 18.998403, 'A', 7, 2, 2, False, False),
+    Element('Ne', '2s^2 2p^6', 'Неон', 10, 20.179, 'A', 8, 2, 2, False, False),
+    Element('Na', '3s^1', 'Натрий', 11, 22.98977, 'A', 1, 3, 3, False, True),
+    Element('Na', '3s^2', 'Магний', 12, 24.305, 'A', 2, 3, 3, False, True),
+    Element('Al', '3s^2 3p^1', 'Алюминий', 13, 26.98154, 'A', 3, 3, 3, False, True),
+    Element('Na', '3s^2 3p^2', 'Кремний', 14, 28.0855, 'A', 4, 3, 3, False, False),
+    Element('P', '3s^2 3p^3', 'Фосфор', 15, 30.97376, 'A', 5, 3, 3, False, False),
+    Element('S', '3s^2 3p^4', 'Сера', 16, 32.066, 'A', 6, 3, 3, False, False),
+    Element('Cl', '3s^2 3p^5', 'Хлор', 17, 35.453, 'A', 7, 3, 3, False, False),
+    Element('Ar', '3s^2 3p^5', 'Аргон', 18, 39.948, 'A', 8, 3, 3, False, False),
+    Element("K", '4s^1', 'Калий', 19, 39.102, 'A', 1, 4, 4, False, True),
+    Element('Ca', '4s^2', 'Кальций', 20, 40.08, 'A', 2, 4, 4, False, True),
+    Element('Sc', '3d^1 4s^2', 'Скандий', 21, 44.956, 'A', 3, 4, 4, False, True),
+    Element('Ti', '3d^2 4s^2', 'Титан', 22, 47.90, 'B', 4, 4, 4, True, True),
+    Element('V', '3d^3 4s^2', 'Ванадий', 23, 50.942, 'B', 5, 4, 4, True, True),
+    Element('Cr', '3d^5 4s^1', 'Хром', 24, 51.996, 'B', 6, 4, 4, True, True),
+    Element('Mn', '3d^5 4s^2', 'Марганец', 25, 54.938, 'B', 7, 4, 4, True, True),
+    Element('Fe', '3d^6 4s^2', 'Железо', 26, 55.847, 'B', 8, 4, 4, True, True),
+    Element('Co', '3d^7 4s^2', 'Кобальт', 27, 58.9332, 'B', 8, 4, 4, True, True),
+    Element('Ni', '4d^8 4s^2', 'Никель', 28, 58.71, 'B', 8, 4, 4, True, True),
+    Element('Cu', '3d^10 4s^1', 'Медь', 29, 63.546, 'B', 1, 4, 5, True, True),
+    Element('Zn', '3d^10 4s^2', 'Цинк', 30, 65.37, 'B', 2, 4, 5, True, True),
+    Element('Ga', '4s^2 4p^1', 'Галлий', 31, 69,72, 'A', 3, 4, 5, True, True),
+    Element('Ge', '4s^2 4p^2', 'Германий', 32, 72.59, 'A', 4, 4, 5, True, True),
+    Element('As', '4s^2 4p^3', 'Мышьяк', 33, 74.9216, 'A', 5, 4, 5, True, True),
+]
 
 
 class MendeleevTable:
     def __init__(self, elements: list) -> None:
         self.elements = elements
 
-    def find_element_by_shortname(self, shortname: str) -> Union[Element, None]:
+    def get_element_by_shortname(self, shortname: str) -> Union[Element, None]:
         for element in self.elements:
             if element.short_name == shortname:
                 return element
 
         return None
 
-    def find_element_by_name(self, name: str) -> Union[Element, None]:
+    def get_element_by_name(self, name: str) -> Union[Element, None]:
         for element in self.elements:
             if element.name == name:
                 return element
 
         return None
+
+    def get_element_by_number(self, num: int) -> Union[Element, None]:
+        for element in self.elements:
+            if element.atomic_number == num:
+                return element
+
+        return None
+
+
+MendeleevTable = MendeleevTable(ELEMENTS)
 

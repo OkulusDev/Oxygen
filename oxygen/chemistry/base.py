@@ -26,7 +26,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 import re
 from collections import Counter
-from oxygen.chemistry.element import ELEMENTS
+from oxygen.chemistry.element import MendeleevTable
 
 
 def repl(m):
@@ -45,7 +45,7 @@ def parse_molecule(formula: str) -> dict:
 
 
 def get_element_mass(element):
-    return ELEMENTS[element].relative_atomic_mass
+    return MendeleevTable.get_element_by_shortname(element).relative_atomic_mass
 
 
 def calculate_mass_fraction_of_element(formula, element):
@@ -57,7 +57,7 @@ def calculate_mass_fraction_of_element(formula, element):
         mass += get_element_mass(i[0]) * i[1]
 
     for i in formula.items():
-        if ELEMENTS[i[0]].short_name == element:
+        if MendeleevTable.get_element_by_shortname(i[0]).short_name == element:
             mass_fraction = (get_element_mass(i[0]) * i[1] / mass) * 100
             break
 
@@ -74,21 +74,22 @@ def calculate_relative_molecular_mass(formula, print_info=False) -> dict:
     for i in result.items():
         try:
             if print_info:
-                print(f'{i[1]} {ELEMENTS[i[0]].name} = \
-{ELEMENTS[i[0]].relative_atomic_mass * i[1]}')
-                print(f'Кол-во протонов в {ELEMENTS[i[0]].short_name} \
-({ELEMENTS[i[0]].name}): {ELEMENTS[i[0]].protons}')
-                print(f'Кол-во электронов в {ELEMENTS[i[0]].short_name} \
-({ELEMENTS[i[0]].name}): {ELEMENTS[i[0]].electrons}')
-                print(f'Кол-во нейтронов в {ELEMENTS[i[0]].short_name} \
-({ELEMENTS[i[0]].name}): {ELEMENTS[i[0]].neutrons}')
+                print(f'{i[1]} {MendeleevTable.get_element_by_shortname([i[0]][0]).name} = \
+{MendeleevTable.get_element_by_shortname([i[0]][0]).relative_atomic_mass * i[1]}')
+                print(f'Кол-во протонов в {MendeleevTable.get_element_by_shortname([i[0]][0]).short_name} \
+({MendeleevTable.get_element_by_shortname([i[0]][0]).name}): {MendeleevTable.get_element_by_shortname([i[0]][0]).protons}')
+                print(f'Кол-во электронов в {MendeleevTable.get_element_by_shortname([i[0]][0]).short_name} \
+({MendeleevTable.get_element_by_shortname([i[0]][0]).name}): {MendeleevTable.get_element_by_shortname([i[0]][0]).electrons}')
+                print(f'Кол-во нейтронов в {MendeleevTable.get_element_by_shortname([i[0]][0]).short_name} \
+({MendeleevTable.get_element_by_shortname([i[0]][0]).name}): {MendeleevTable.get_element_by_shortname([i[0]][0]).neutrons}')
 
-            neutrons += ELEMENTS[i[0]].neutrons
-            electrons += ELEMENTS[i[0]].electrons
-            protons += ELEMENTS[i[0]].protons
+            neutrons += MendeleevTable.get_element_by_shortname([i[0]][0]).neutrons * i[1]
+            electrons += MendeleevTable.get_element_by_shortname([i[0]][0]).electrons * i[1]
+            protons += MendeleevTable.get_element_by_shortname([i[0]][0]).protons * i[1]
 
             mass += get_element_mass(i[0]) * i[1]
-        except:
+        except Exception as e:
+            print(e)
             raise ValueError(f'Element {i[0]} does not exists. Try other!')
 
     return {
