@@ -34,6 +34,7 @@ def repl(m):
 
 
 def parse_molecule(formula: str) -> dict:
+    """Парсинг молекулы"""
     while '(' in formula:
         formula = re.sub(r'\((\w*)\)(\d*)', repl, formula)
     while '[' in formula:
@@ -44,11 +45,17 @@ def parse_molecule(formula: str) -> dict:
     return formula_dict
 
 
-def get_element_mass(element):
-    return MendeleevTable.get_element_by_shortname(element).relative_atomic_mass
+def get_element_mass(element: str):
+    """Получаем массу элемента по его химическому значку"""
+    try:
+        return MendeleevTable.get_element_by_shortname(element).relative_atomic_mass
+    except:
+        raise ValueError(f"Element {element} does not exists. Try other!")
+        sys.exit()
 
 
-def calculate_mass_fraction_of_element(formula, element):
+def calculate_mass_fraction_of_element(formula: str, element: str):
+    """Вычисляем массовую долю элемента в формуле"""
     formula = parse_molecule(formula)
     mass_fraction = 0
     mass = 0
@@ -64,7 +71,8 @@ def calculate_mass_fraction_of_element(formula, element):
     return mass_fraction
 
 
-def calculate_relative_molecular_mass(formula, print_info=False) -> dict:
+def calculate_relative_molecular_mass(formula: str, print_info: bool=False) -> dict:
+    """Вычисляем относительную массовую долю формулы"""
     result = parse_molecule(formula)
     mass = 0
     neutrons = 0

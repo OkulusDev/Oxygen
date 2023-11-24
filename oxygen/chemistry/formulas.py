@@ -16,6 +16,7 @@ from oxygen.chemistry.elements import MendeleevTable
 
 
 class ChemicalFormula:
+    """Класс химической формулы"""
     def __init__(self, elements: dict, formula: str,
                  name: str, molecular_mass: float=None):
         self.elements = elements
@@ -27,13 +28,16 @@ class ChemicalFormula:
         self.name = name
 
 
+# Химические формулы
 CHEMICAL_FORMULAS = {
     'H2O': ChemicalFormula({('H', 2), ('O', 1)}, "H2O", 'Вода', None),
-    'C12H22O11': ChemicalFormula({('C', 12), ('H', 22), ('O', 11)}, "C12H22O11", 'Сахароза (сахар)', None)
+    'C12H22O11': ChemicalFormula({('C', 12), ('H', 22), ('O', 11)},
+                                 "C12H22O11", 'Сахароза (сахар)', None)
 }
 
 
-def read_formula(formula):
+def read_formula(formula: str):
+    """Читаем формулу и выводим ее, если существует таковая"""
     if formula in CHEMICAL_FORMULAS:
         print(f'Формула {formula} это - {CHEMICAL_FORMULAS[formula].name}')
         elements_in_formula = []

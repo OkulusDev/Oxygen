@@ -5,7 +5,7 @@
  Автор: Okulus Dev (aka DrArgentum)
  Лицензия: GNU GPL v3
  Название: Химические элементы
- Файл: oxygen/chemistry/element.py
+ Файл: oxygen/chemistry/elements.py
 --------------------------------------------------------------------------------
  Описание: файл с химическими элементами
 
@@ -25,18 +25,6 @@ import csv
 from typing import Union
 from oxygen.base.base import round_to_nearest
 
-
-#     def calculate_protons(self) -> float:
-#         self.protons = self.atomic_number
-#         return float(self.protons)
-#
-#     def calculate_electrons(self) -> float:
-#         self.electrons = self.atomic_number
-#         return float(self.electrons)
-#
-#     def calculate_neutrons(self) -> float:
-#         self.neutrons = round_to_nearest(self.relative_atomic_mass) - self.protons
-#         return float(self.neutrons)
 
 class Element:
     def __init__(self, atomic_number: int, name: str, symbol: str, atomic_mass: float,
