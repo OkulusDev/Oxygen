@@ -26,7 +26,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 import re
 from collections import Counter
-from oxygen.chemistry.element import MendeleevTable
+from oxygen.chemistry.elements import MendeleevTable
 
 
 def repl(m):

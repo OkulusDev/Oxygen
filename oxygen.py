@@ -25,7 +25,7 @@ import argparse
 import textwrap
 from oxygen.chemistry.base import calculate_relative_molecular_mass, \
                                     calculate_mass_fraction_of_element
-from oxygen.chemistry.chemical_formulas import read_formula
+from oxygen.chemistry.formulas import read_formula
 
 
 def get_molecular_mass_from_formule(formula):
@@ -57,6 +57,12 @@ oxygen.py -c -rmm <ФОРМУЛА>
 # Вычисление массовой доли элемента в формуле
 oxygen.py -c -mf <ФОРМУЛА> -mfe <ЭЛЕМЕНТ ИЗ ФОРМУЛЫ>
 
+# Вычисление относительной молекулярной массы формулы с определением формулы сложного вещества
+oxygen.py -cr -rmm <ФОРМУЛА>
+
+# Вычисление массовой доли элемента в формуле с определением формулы сложного вещества
+oxygen.py -cr -mf <ФОРМУЛА> -mfe <ЭЛЕМЕНТ ИЗ ФОРМУЛЫ>
+
 Copyright Okulus Dev (C) 2023
 	'''))
     parser.add_argument('-c', '--chemistry-mode', help='включить мод химии',
@@ -82,8 +88,8 @@ Copyright Okulus Dev (C) 2023
                                                           args.mf_element)
                 if args.read_formula:
                     read_formula(args.mass_fraction)
-                print(f"Массовая доля {args.cmf_element} в \
-{args.calculating_mass_fraction}: {res}%")
+                print(f"Массовая доля {args.mf_element} в \
+{args.mass_fraction}: {res}%")
             else:
                 print('К сожалению, вы не указали нужный элемент.')
                 if args.read_formula:

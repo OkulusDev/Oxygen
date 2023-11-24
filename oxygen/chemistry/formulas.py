@@ -12,7 +12,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from oxygen.chemistry.base import calculate_relative_molecular_mass
-from oxygen.chemistry.element import MendeleevTable
+from oxygen.chemistry.elements import MendeleevTable
 
 
 class ChemicalFormula:
