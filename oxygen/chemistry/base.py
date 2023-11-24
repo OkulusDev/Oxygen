@@ -25,6 +25,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 import re
+import sys
 from collections import Counter
 from oxygen.chemistry.elements import MendeleevTable
 
@@ -33,12 +34,31 @@ def repl(m):
     return m[1] * int(m[2] if m[2] else 1)
 
 
+def is_balanced(text, brackets="〈〉()[]{}"):
+    opening, closing = brackets[::2], brackets[1::2]
+    stack = []
+    for character in text:
+        if character in opening:
+            stack.append(opening.index(character))
+        elif character in closing:
+            if stack and stack[-1] == closing.index(character):
+                stack.pop() 
+            else:
+                return False
+    return (not stack)
+
+
 def parse_molecule(formula: str) -> dict:
     """Парсинг молекулы"""
+    if not is_balanced(formula):
+        raise ValueError(f"Brackets in {formula} is not balanced")
+        sys.exit()
+    
     while '(' in formula:
         formula = re.sub(r'\((\w*)\)(\d*)', repl, formula)
     while '[' in formula:
         formula = re.sub(r'\[(\w*)\](\d*)', repl, formula)
+    
     formula = re.sub(r'([A-Z][a-z]?)(\d*)', repl, formula)
     formula_dict = Counter(re.findall('[A-Z][a-z]*', formula))
 
