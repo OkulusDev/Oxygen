@@ -32,7 +32,10 @@ class ChemicalFormula:
 CHEMICAL_FORMULAS = {
     'H2O': ChemicalFormula({('H', 2), ('O', 1)}, "H2O", 'Вода', None),
     'C12H22O11': ChemicalFormula({('C', 12), ('H', 22), ('O', 11)},
-                                 "C12H22O11", 'Сахароза (сахар)', None)
+                                 "C12H22O11", 'Сахароза (сахар)', None),
+    'NaCl': ChemicalFormula({("Na", 1), ('Cl', 1)}, 'NaCl', 'Поваренная соль'),
+    'Na2CO3': ChemicalFormula({('Na', 2), ('C', 1), ('O', 3)}, 'Na2CO3',
+                              'Кальцинированная вода')
 }
 
 
