@@ -67,7 +67,6 @@ class Element:
             self.element_type = element_type
 
 
-AVOGADRO_NUMBER = 6.02214076e23
 ELEMENTS = []
 
 with open('oxygen/chemistry/data/PeriodicTable.csv', newline='') as File:

@@ -17,6 +17,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>."""
 import math
 
 PI = f'π = {math.pi}'
+# AVOGADRO_NUMBER = 6.02 * (10 ** 23)
+AVOGADRO_NUMBER = 6.022
 
 
 def round_to_nearest(num: int):
