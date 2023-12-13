@@ -33,4 +33,5 @@ def count_moles_from_molecules(N: float):
 
 def calculate_mass_from_moles(formula: str, n: int):
     M = calculate_relative_molecular_mass(formula, False)['mass']
-    return M * float(n)
+    # return M * float(n)
+    return M

@@ -27,8 +27,9 @@ from oxygen.chemistry.base import calculate_relative_molecular_mass, \
                                     calculate_mass_fraction_of_element
 from oxygen.chemistry.formulas import read_formula
 from oxygen.chemistry.count_of_substance import count_molecules_from_moles, \
-                                                count_moles_from_molecules,
-                                                calculate_mass_from_moles
+                                                count_moles_from_molecules, \
+                                                calculate_mass_from_moles, \
+                                                count_molecules_from_moles
 
 
 def get_molecular_mass_from_formule(formula):
@@ -58,7 +59,7 @@ oxygen.py -c
 oxygen.py -r
 
 # Вычисление относительной молекулярной массы формулы
-oxygen.py -crmm -f <ФОРМУЛА>
+oxygen.py -cr -rmm <ФОРМУЛА>
 
 # Вычисление массовой доли элемента в формуле
 oxygen.py -c -mf <ФОРМУЛА> -mfe <ЭЛЕМЕНТ ИЗ ФОРМУЛЫ>
@@ -119,20 +120,20 @@ Copyright Okulus Dev (C) 2023
                     read_formula(args.mass_fraction)
         elif args.count_of_molecules:
             if args.count_of_molecules.isdigit():
-                result = count_molecules(args.count_of_molecules)
+                result = count_molecules_from_moles(args.count_of_molecules)
                 print(f'N = n * Na = {result} молекул')
                 if args.read_formula:
                     read_formula(args.mass_fraction)
             else:
                 print('К сожалению, вы ввели не число')
         elif args.count_of_moles:
-            result = count_moles(args.count_of_moles)
+            result = count_moles_from_molecules(args.count_of_moles)
             print(f'n = N / Na = {result} молей')
             if args.read_formula:
                 read_formula(args.mass_fraction)
         elif args.substance_mass:
             if args.formula:
-                result = calculate_mass(args.formula, args.substance_mass)
+                result = calculate_mass_from_moles(args.formula, args.substance_mass)
                 print(f"m = M * n = {result}")
             else:
                 print('Запустите программу с флагом --formula <ФОРМУЛА>')
