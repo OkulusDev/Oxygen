@@ -18,7 +18,7 @@ from oxygen.chemistry.elements import MendeleevTable
 class ChemicalFormula:
     """Класс химической формулы"""
     def __init__(self, elements: dict, formula: str,
-                 name: str, molecular_mass: float=None):
+                 name: str, molecular_mass: float=0.0):
         self.elements = elements
         self.formula = formula
         if molecular_mass is not None:
@@ -30,12 +30,16 @@ class ChemicalFormula:
 
 # Химические формулы
 CHEMICAL_FORMULAS = {
-    'H2O': ChemicalFormula({('H', 2), ('O', 1)}, "H2O", 'Вода', None),
+    'H2O': ChemicalFormula({('H', 2), ('O', 1)}, "H2O", 'Вода', 0.0),
     'C12H22O11': ChemicalFormula({('C', 12), ('H', 22), ('O', 11)},
-                                 "C12H22O11", 'Сахароза (сахар)', None),
+                                 "C12H22O11", 'Сахароза (сахар)', 0.0),
     'NaCl': ChemicalFormula({("Na", 1), ('Cl', 1)}, 'NaCl', 'Поваренная соль'),
     'Na2CO3': ChemicalFormula({('Na', 2), ('C', 1), ('O', 3)}, 'Na2CO3',
-                              'Кальцинированная вода')
+                              'Кальцинированная вода', 0.0),
+    'CO2': ChemicalFormula({('C', 1), ('O', 2)}, 'CO2', 'Углекислый газ', 0.0),
+    'HO': ChemicalFormula({('H', 1), ('O', 1)}, 'HO', 'Гидроксид', 0.0),
+    'NaO': ChemicalFormula({('Na', 1), ('O', 1)}, 'NaO', 'Оксид натрия', 0.0),
+    'CaO': ChemicalFormula({('Ca', 1), ('O', 1)}, 'CaO', 'Оксид кальция', 0.0)
 }
 
 

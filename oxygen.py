@@ -33,6 +33,7 @@ from oxygen.chemistry.count_of_substance import count_molecules_from_moles, \
 
 
 def get_molecular_mass_from_formule(formula):
+    """Calculating a molecular mass from formula"""
     print(f'Расчет формулы {formula}:\n')
     mass = calculate_relative_molecular_mass(formula, True)
 
@@ -91,7 +92,8 @@ Copyright Okulus Dev (C) 2023
                         help='расчет массовой доли в формуле')
     parser.add_argument('-mfe', '--mf-element', metavar='ФОРМУЛА',
                         help='элемент для рассчета массовой доли')
-    parser.add_argument('-N', '--count-of-molecules', metavar='КОЛИЧЕСТВО ВЕЩЕСТВА В МОЛЯХ',
+    parser.add_argument('-N', '--count-of-molecules', 
+                        metavar='КОЛИЧЕСТВО ВЕЩЕСТВА В МОЛЯХ',
                         help='расчет количества молекул')
     parser.add_argument('-n', '--count-of-moles', metavar='КОЛИЧЕСТВО МОЛЕКУЛ',
                         help='расчет количества молей')
@@ -143,3 +145,4 @@ Copyright Okulus Dev (C) 2023
 
 if __name__ == "__main__":
     main()
+
